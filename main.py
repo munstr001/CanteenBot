@@ -50,7 +50,7 @@ def get_best_canteen() -> str:
     min_percent = min(loads.values())
 
     # кандидаты — те, у кого разница с минимумом <=2%
-    candidates = [k for k, v in loads.items() if abs(v - min_percent) <= pc]
+    candidates = [k for k, v in loads.items() if abs(v - min_percent) <= PERCENTAGE_OF_SCATTER]
 
     # если несколько кандидатов → выбираем по вместимости
     best_key = max(candidates, key=lambda k: canteens[k]["max"])
@@ -123,4 +123,5 @@ async def main():
 
 
 if __name__ == "__main__":
+
     asyncio.run(main())
